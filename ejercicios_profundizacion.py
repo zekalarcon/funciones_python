@@ -11,9 +11,12 @@ Programa creado para que practiquen los conocimietos
 adquiridos durante la semana
 '''
 
-__author__ = "Inove Coding School"
-__email__ = "alumnos@inove.com.ar"
-__version__ = "1.3"
+__author__ = "Ezequiel Alarcon"
+__email__ = "zekalarcon@gmail.com"
+
+
+from metodos import *
+
 
 
 def ej1():
@@ -55,6 +58,15 @@ def ej2():
     Imprimir en pantalla la lista ordenada
     '''
 
+    inicio = 1
+    fin = 6
+    cantidad = 5
+
+    numeros = lista_aleatoria(inicio, fin, cantidad)
+    lista_ordenada = ordenar(numeros)
+    print(f'Dados aleatorios: {numeros}')
+    print(f'Dados ordenados de menor a mayor: {lista_ordenada}')
+
 
 def ej3():
     print("Jugando a los dados")
@@ -88,7 +100,22 @@ def ej3():
 
     '''
 
+    inicio = 1
+    fin = 6
+    cantidad = 5
 
+    numeros = lista_aleatoria(inicio, fin, cantidad)
+    
+    print(f'Dados aleatorios: {numeros}')
+    print(f'El numero 1 aparace: {contar(numeros, 1)}')
+    print(f'El numero 2 aparace: {contar(numeros, 2)}')
+    print(f'El numero 3 aparace: {contar(numeros, 3)}')
+    print(f'El numero 4 aparace: {contar(numeros, 4)}')
+    print(f'El numero 5 aparace: {contar(numeros, 5)}')
+    print(f'El numero 6 aparace: {contar(numeros, 6)}')
+    print(f'El numero que mas se repite es: {max(numeros, key=numeros.count)}')
+
+    
 def ej4():
     print("Ahora sí! buena suerte :)")
 
@@ -146,9 +173,58 @@ def ej4():
     '''
 
 
+    inicio = 1
+    fin = 6
+    cantidad = 5
+    intentos = 0
+    dados_guardados = []
+
+    
+    numeros = lista_aleatoria(inicio, fin, cantidad)
+    print(f'Dados primer tirada: {numeros}')
+    max_numero = max(numeros, key=numeros.count)
+    print(f'El numero que mas se repite es: {max_numero}')
+    
+    
+    for i in numeros:
+        if i == max_numero:
+            dados_guardados.append(i)
+    intentos += 1        
+    cantidad -= len(dados_guardados)
+    print(f'Dados guardados: {dados_guardados}')
+    
+
+    while True:
+        if len(dados_guardados) == 5:
+            break
+        numeros = lista_aleatoria(inicio, fin, cantidad)
+        intentos +=1
+        print(f'Dados: {numeros} intento {intentos}')
+        for i in numeros:
+            if i == max_numero:
+                dados_guardados.append(i)
+            if len(dados_guardados) == 1:
+                cantidad = 4
+            if len(dados_guardados) == 2:
+                cantidad = 3
+            if len(dados_guardados) == 3:
+                cantidad = 2
+            if len(dados_guardados) == 4:
+                cantidad = 1                 
+        
+    print(f'Generala {dados_guardados} en {intentos} intentos')
+                     
+
+
+    
+    
+   
+  
+
+
 if __name__ == '__main__':
     print("Ejercicios de práctica")
-    # ej1()
-    # ej2()
-    # ej3()
-    # ej4()
+    #ej1()
+    #ej2()
+    #ej3()
+    ej4()
