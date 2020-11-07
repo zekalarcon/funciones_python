@@ -203,14 +203,8 @@ def ej4():
         for i in numeros:
             if i == max_numero:
                 dados_guardados.append(i)
-            if len(dados_guardados) == 1:
-                cantidad = 4
-            if len(dados_guardados) == 2:
-                cantidad = 3
-            if len(dados_guardados) == 3:
-                cantidad = 2
-            if len(dados_guardados) == 4:
-                cantidad = 1                 
+                cantidad = 5
+                cantidad -= len(dados_guardados)            
         
     print(f'Generala {dados_guardados} en {intentos} intentos')
                      
